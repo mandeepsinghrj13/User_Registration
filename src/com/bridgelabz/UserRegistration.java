@@ -7,12 +7,31 @@ public class UserRegistration //class name
 {
 	public static void main(String[] args) //main
 	{
-		System.out.println("Welcome To User Registration");//welcome message
 		Scanner scanner = new Scanner(System.in); 
-		String FirstName  = scanner.next(); //user input
-		Pattern pattern = Pattern.compile("^([A-Z]{1}[a-z]{2,})");//Reg Exp
-		Matcher matcher = pattern.matcher(FirstName); //reg match with first_name
-		boolean isMatcher = matcher.matches();// boolean true/false
-		System.out.println(isMatcher);
+		System.out.println("---Welcome To User Registration---\n"
+				+"Choose your option : \n"
+				+ "1. Enter the First Name :");
+		
+		int option  = scanner.nextInt(); 
+		System.out.println();
+		switch(option) 
+		{
+			case 1:
+				Scanner scanner1 = new Scanner(System.in); 
+				System.out.println("Enter User First Name : ");
+				String FirstName  = scanner1.next(); 
+				String regex = "^([A-Z]{1}[a-z]{2,})";//Reg Exp
+		
+				Pattern pattern = Pattern.compile(regex);
+		
+				Matcher matcher = pattern.matcher(FirstName); //reg match with first_name
+		
+				boolean isMatcher = matcher.matches();// boolean true/false
+			if(isMatcher)
+				System.out.println("User First Name is Valid....");
+			else
+				System.out.println("User First Name is InValid....");
+			break;
+		}
 	}
 }
