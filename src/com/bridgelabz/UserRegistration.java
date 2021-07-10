@@ -11,7 +11,8 @@ public class UserRegistration //class name
 		System.out.println("---Welcome To User Registration---\n"
 				+"Choose your option : \n"
 				+ "1. Enter the First Name :\n"
-				+ "2. Enter the Last Name :\n");
+				+ "2. Enter the Last Name :\n"
+				+ "3. Enter the Email :");
 		
 		int option  = scanner.nextInt(); 
 		System.out.println();
@@ -29,9 +30,9 @@ public class UserRegistration //class name
 		
 				boolean isMatcher = matcher.matches();// boolean true/false
 				if(isMatcher)
-				System.out.println("User First Name is Valid....");
+					System.out.println("User First Name is Valid....");
 				else
-				System.out.println("User First Name is InValid....");
+					System.out.println("User First Name is InValid....");
 				break;
 			
 		case 2:
@@ -42,14 +43,30 @@ public class UserRegistration //class name
 		
 				Pattern pattern2 = Pattern.compile(regex2);
 		
-				Matcher matcher2 = pattern2.matcher(LastName); //reg match with first_name
+				Matcher matcher2 = pattern2.matcher(LastName); //reg match with last_name
 		
 				boolean isMatcher2 = matcher2.matches();// boolean true/false
 				if(isMatcher2)
-				System.out.println("User Last Name is Valid....");
+					System.out.println("User Last Name is Valid....");
 				else
-				System.out.println("User Last Name is InValid....");
+					System.out.println("User Last Name is InValid....");
 				break;
+		case 3:
+				Scanner scanner3 = new Scanner(System.in); 
+				System.out.println("Enter User Email : ");
+				String Email  = scanner3.next(); 
+				String regex3 = "^[a-zA-Z]+([.][a-zA-Z]+)*@[a-zA-Z]+[.][a-zA-Z]{2,3}+([.][a-zA-Z]+)*$";
+	
+				Pattern pattern3 = Pattern.compile(regex3);
+	
+				Matcher matcher3 = pattern3.matcher(Email); 
+				
+				boolean isMatcher3 = matcher3.matches();// boolean true/false
+				if(isMatcher3)
+					System.out.println("User Email is Valid....");
+				else
+					System.out.println("User Email is InValid....");
+				break;		
 		}
 	}
 }
