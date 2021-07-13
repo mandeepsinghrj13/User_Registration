@@ -14,7 +14,9 @@ public class UserRegistration //class name
 				+ "2. Enter the Last Name :\n"
 				+ "3. Enter the Email :\n"
 				+ "4. Enter the mobile number :\n"
-				+ "5. PassWord Rule 1 : ");
+				+ "5. PassWord Rule 1 :\n"
+				+ "6. PassWord Rule 2 :\n"
+				+ "7. PassWord Rule 3 : ");
 		
 		int option  = scanner.nextInt(); 
 		System.out.println();
@@ -115,6 +117,21 @@ public class UserRegistration //class name
 				System.out.println("User PassWord2 is Valid....");
 			else
 				System.out.println("User PassWord2 is InValid....");
+			break;
+		case 7:
+			Scanner scanner7 = new Scanner(System.in); 
+			System.out.println("Enter User PassWord3 : ");
+			String PassWord3  = scanner7.next(); 
+			String regex7 = "^[A-Z]{1}+[a-zA-Z].+[0-9].+{8,}$";
+			Pattern pattern7 = Pattern.compile(regex7);
+	
+			Matcher matcher7 = pattern7.matcher(PassWord3); 
+	
+			boolean isMatcher7 = matcher7.matches();// boolean true/false
+			if(isMatcher7)
+				System.out.println("User PassWord3 is Valid....");
+			else
+				System.out.println("User PassWord3 is InValid....");
 			break;
 		}
 	}
