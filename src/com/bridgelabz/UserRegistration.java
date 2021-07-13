@@ -12,7 +12,8 @@ public class UserRegistration //class name
 				+"Choose your option : \n"
 				+ "1. Enter the First Name :\n"
 				+ "2. Enter the Last Name :\n"
-				+ "3. Enter the Email :");
+				+ "3. Enter the Email :\n"
+				+ "4. Enter the mobile number :");
 		
 		int option  = scanner.nextInt(); 
 		System.out.println();
@@ -55,7 +56,7 @@ public class UserRegistration //class name
 				Scanner scanner3 = new Scanner(System.in); 
 				System.out.println("Enter User Email : ");
 				String Email  = scanner3.next(); 
-				String regex3 = "^[a-zA-Z]+([.][a-zA-Z]+)*@[a-zA-Z]+[.][a-zA-Z]{2,3}+([.][a-zA-Z]+)*$";
+				String regex3 = "^*+[a-zA-Z]+([.][a-zA-Z]+)*@[a-zA-Z]+[.][a-zA-Z]{2,3}+([.][a-zA-Z]+)*$";
 	
 				Pattern pattern3 = Pattern.compile(regex3);
 	
@@ -66,7 +67,23 @@ public class UserRegistration //class name
 					System.out.println("User Email is Valid....");
 				else
 					System.out.println("User Email is InValid....");
-				break;		
+				break;
+		case 4:
+			Scanner scanner4 = new Scanner(System.in); 
+			System.out.println("Enter User mobile number : "); 
+			String mobile  = scanner4.next(); 
+			String regex4 =("^[0-9]{2}\\s{0,1}[0-9]{10}$");
+
+			Pattern pattern4 = Pattern.compile(regex4);
+
+			Matcher matcher4 = pattern4.matcher(mobile); 
+			
+			boolean isMatcher4 = matcher4.matches();// boolean true/false
+			if(isMatcher4)
+				System.out.println("User mobile number is Valid....");
+			else
+				System.out.println("User mobile number is InValid....");
+			break;
 		}
 	}
 }
