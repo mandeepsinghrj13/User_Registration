@@ -101,6 +101,21 @@ public class UserRegistration //class name
 			else
 				System.out.println("User PassWord1 is InValid....");
 			break;
+		case 6:
+			Scanner scanner6 = new Scanner(System.in); 
+			System.out.println("Enter User PassWord2 : ");
+			String PassWord2  = scanner6.next(); 
+			String regex6 = "^[A-Z]{1}+[a-zA-z0-9]{8,}$";
+			Pattern pattern6 = Pattern.compile(regex6);
+
+			Matcher matcher6 = pattern6.matcher(PassWord2); 
+			
+			boolean isMatcher6 = matcher6.matches();// boolean true/false
+			if(isMatcher6)
+				System.out.println("User PassWord2 is Valid....");
+			else
+				System.out.println("User PassWord2 is InValid....");
+			break;
 		}
 	}
 }
