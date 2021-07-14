@@ -17,7 +17,8 @@ public class UserRegistration //class name
 				+ "5. PassWord Rule 1 (minimum 8 char):\n"
 				+ "6. PassWord Rule 2 (1 upper case):\n"
 				+ "7. PassWord Rule 3 (1 numeric number):\n"
-				+ "8. Password Rule 4 (1 special character) : ");
+				+ "8. Password Rule 4 (1 special character):\n"
+				+ "9. Enter the EmailAll :");
 		
 		int option  = scanner.nextInt(); 
 		System.out.println();
@@ -60,7 +61,7 @@ public class UserRegistration //class name
 				Scanner scanner3 = new Scanner(System.in); 
 				System.out.println("Enter User Email : ");
 				String Email  = scanner3.next(); 
-				String regex3 = "^*+[a-zA-Z]+([.][a-zA-Z]+)*@[a-zA-Z]+[.][a-zA-Z]{2,3}+([.][a-zA-Z]+)*$";
+				String regex3 = "^*+[a-zA-Z]+([.][a-zA-Z]+)*@[a-zA-Z]+[.][a-zA-Z]{2,3}+([.][a-zA-Z]+)*$"; //reg exp for email
 	
 				Pattern pattern3 = Pattern.compile(regex3);
 	
@@ -75,8 +76,8 @@ public class UserRegistration //class name
 		case 4:
 			Scanner scanner4 = new Scanner(System.in); 
 			System.out.println("Enter User mobile number : "); 
-			String mobile  = scanner4.next(); 
-			String regex4 =("^[0-9]{2}\\s{0,1}[0-9]{10}$");
+			String mobile  = scanner4.nextLine(); 
+			String regex4 ="^[0-9]{0,2}\\s{0,1}[0-9]{10}"; //reg exp for mobile number
 
 			Pattern pattern4 = Pattern.compile(regex4);
 
@@ -92,7 +93,7 @@ public class UserRegistration //class name
 			Scanner scanner5 = new Scanner(System.in); 
 			System.out.println("Enter User PassWord1 : ");
 			String PassWord1  = scanner5.next(); 
-			String regex5 = "^[0-9]{8,}$";
+			String regex5 = "^[0-9]{8,}$"; //reg exp for minimum 8 number should have
 
 			Pattern pattern5 = Pattern.compile(regex5);
 
@@ -108,7 +109,7 @@ public class UserRegistration //class name
 			Scanner scanner6 = new Scanner(System.in); 
 			System.out.println("Enter User PassWord2 : ");
 			String PassWord2  = scanner6.next(); 
-			String regex6 = "^[A-Z]{1}+[a-zA-z0-9]{8,}$";
+			String regex6 = "^[A-Z]{1}+[a-zA-z0-9]{8,}$";//atlist 1 capital char
 			Pattern pattern6 = Pattern.compile(regex6);
 
 			Matcher matcher6 = pattern6.matcher(PassWord2); 
@@ -138,7 +139,7 @@ public class UserRegistration //class name
 			Scanner scanner8 = new Scanner(System.in); 
 			System.out.println("Enter User PassWord4 : ");
 			String PassWord4  = scanner8.next(); 
-			String regex8 = "^[A-Z]{1}+[a-zA-Z].*[@#$%^&*._+=].*[0-9].*{8,}$";
+			String regex8 = "^[A-Z]{1}+[a-zA-Z].*[@#$%^&*._+=].*[0-9].*{8,}$";//1 special character
 			Pattern pattern8 = Pattern.compile(regex8);
 	
 			Matcher matcher8 = pattern8.matcher(PassWord4); 
@@ -149,6 +150,27 @@ public class UserRegistration //class name
 			else
 				System.out.println("User PassWord4 is InValid....");
 			break;
-		}
+		case 9:
+			//Scanner scanner9 = new Scanner(System.in); 
+			System.out.println("Enter User EmailAll : ");
+			 String[] validEmailSample = {"abc@yahoo.com", "abc-100@yahoo.com", 
+					 "abc.100@yahoo.com", "abc111@abc.com", "abc-100@abc.net", 
+					 "abc.100@abc.com.au", "abc@1.com", "abc@gmail.com.com", 
+					 "abc+100@gmail.com"};//check all email is valid
+		        String[] invalidEmailSample = {"abc", "abc@.com.my", "abc123@gmail.a", 
+		        		"abc123@.com", "abc123@.com.com", ".abc@abc.com", "abc()*@gmail.com", 
+		        		"abc@%*.com", "abc..2002@gmail.com", "abc.@gmail.com", "abc@abc@gmail.com",
+		        		"abc@gmail.com.1a",  }; //this all email are invalid
+
+		        System.out.println("------------Valid email------------ :");
+		        emailValidate(validEmailSample);
+		        System.out.println("\n--------Invalid emails------\n");
+		        emailValidate(invalidEmailSample);
+		    }
+		} 
+	public static void emailValidate(String[] emails) {
+	        for (String email : emails) {
+	            System.out.print(Pattern.matches("^*+[a-zA-Z0-9]+([.+-][a-zA-Z0-9]+)*@[a-zA-Z0-9]+[.][a-zA-Z]{2,3}+([.][a-zA-Z]+)*$", email) + " ");
+	        }
+	    }
 	}
-}
